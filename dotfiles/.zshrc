@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/ben/.oh-my-zsh"
 
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -34,6 +35,11 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+
+# Open tmux by default (attach to main or create main)
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  tmux a -t main || exec tmux new -s main && exit;
+fi
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"

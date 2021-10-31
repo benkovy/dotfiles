@@ -92,6 +92,7 @@ echo --- neovim configured
 echo
 
 install tmux
+install ripgrep
 
 echo Installing zsh plugins
 echo ---------------------- \n

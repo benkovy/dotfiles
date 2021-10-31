@@ -9,12 +9,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'
+Plug 'itchyny/lightline.vim'
 
 Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
 Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter' 
 
@@ -43,19 +46,26 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-colorscheme gruvbox 
-
-let g:palenight_terminal_italics=1
+" deal with colors
+if !has('gui_running')
+  set t_Co=256
+endif
+set background=dark
+let base16colorspace=256
+colorscheme base16-gruvbox-dark-hard
 
 set relativenumber
+set number " Also show current absolute line
 set hidden
 set nocompatible
+set noshowmode
 
 set mouse=a
 set clipboard^=unnamed " use the system register for clipboard
 set whichwrap+=<,>,h,l " Let movement wrap
 set shiftwidth=2
 set tw=80 	       " Limit line length
+set colorcolumn=80 " and give me a colored column
 
 set smarttab
 set cindent
@@ -76,7 +86,15 @@ noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
-nmap <silent> <c-p> :GFiles<CR>
+" Use left and right to move through buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
+
+" Use tabs to move through popups
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+nmap <silent> <c-p> :Files<CR>
 nmap <silent> <c-t> :Buffers<CR>
 nmap <silent> <c-f> :GGrep<CR>
 
@@ -113,6 +131,24 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json' ]
 
+" Lightline
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileencoding', 'filetype' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'gitbranch': 'FugitiveHead'
+      \
+      \ },
+      \ }
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
 
 
 
