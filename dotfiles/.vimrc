@@ -10,6 +10,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -72,6 +73,10 @@ set cindent
 set tabstop=2
 set shiftwidth=2
 set expandtab " always uses spaces instead of tab characters
+set splitbelow
+set splitright
+set timeoutlen=1000
+set ttimeoutlen=50
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -93,14 +98,13 @@ nnoremap <right> :bn<CR>
 " Use tabs to move through popups
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 nmap <silent> <c-p> :Files<CR>
 nmap <silent> <c-t> :Buffers<CR>
 nmap <silent> <c-f> :GGrep<CR>
 
 map <leader>bb :bd<cr>
-vmap <silent> ++ <plug>NERDCommenterToggle
-nmap <silent> ++ <plug>NERDCommenterToggle
 
 " ctrl space to bring up completion
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -129,6 +133,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint',
   \ 'coc-prettier',
+  \ 'coc-graphql',
   \ 'coc-json' ]
 
 " Lightline
