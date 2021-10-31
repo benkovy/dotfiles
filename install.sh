@@ -91,6 +91,8 @@ nvim --headless +PlugInstall +qall
 echo --- neovim configured
 echo
 
+install tmux
+
 echo Installing zsh plugins
 echo ---------------------- \n
 

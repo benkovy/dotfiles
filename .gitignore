@@ -1,1 +1,2 @@
-dotfiles/.config/coc
+dotfiles/.config/*
+!dotfiles/.config/nvim
