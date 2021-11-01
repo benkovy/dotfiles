@@ -67,6 +67,7 @@ echo Installing dependencies
 echo -----------------------
 echo
 
+
 function install {
   if ! command -v name &> /dev/null; then
     if command -v apt-get &> /dev/null; then
@@ -78,13 +79,7 @@ function install {
   echo "--- $1 installed"
 }
 
-# Neovim
-if command -v apt-get &> /dev/null; then
-  sudo add-apt-repository ppa:neovim-ppa/unstable
-  sudo apt-get update
-fi
 install neovim
-
 curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim --headless +PlugInstall +qall
@@ -96,6 +91,9 @@ install ripgrep
 
 echo Installing zsh plugins
 echo ---------------------- \n
+
+# install oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # auto complete for zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions \
