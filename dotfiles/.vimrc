@@ -10,6 +10,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-commentary'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -24,20 +28,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'TaDaa/vimade'
-
-" Ruby
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
 Plug 'thoughtbot/vim-rspec'
 Plug 'noprompt/vim-yardoc'    
 
-" Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
 
-" Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -50,12 +47,13 @@ endif
 if !has('gui_running')
   set t_Co=256
 endif
+
 set background=dark
 let base16colorspace=256
 colorscheme base16-gruvbox-dark-hard
 
 set relativenumber
-set number " Also show current absolute line
+set number " show current absolute line
 set hidden
 set nocompatible
 set noshowmode
@@ -84,6 +82,11 @@ nmap <silent> ]t :tabnext<cr>
 map H ^
 map L $
 
+" Sane splitting
+nmap \\ :vsplit<cr>
+nmap -- :split<cr>
+nmap <bar><bar> ZZ
+
 " Move between windows like cbothner :)
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
@@ -102,9 +105,7 @@ nmap <silent> <c-p> :Files<CR>
 nmap <silent> <c-t> :Buffers<CR>
 nmap <silent> <c-f> :GGrep<CR>
 
-map <leader>bb :bd<cr>
-vmap <silent> ++ <plug>NERDCommenterToggle
-nmap <silent> ++ <plug>NERDCommenterToggle
+nmap __ :bd<cr>
 
 " ===============================
 " COC improvements
@@ -139,7 +140,6 @@ nnoremap <silent> M :call CocActionAsync('doHover')<cr>
 " ===============================
 " End COC improvements
 " ===============================
-
 
 " Search clearing
 nnoremap <CR> :noh<CR><CR>

@@ -20,7 +20,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
