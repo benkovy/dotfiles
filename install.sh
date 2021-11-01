@@ -3,6 +3,22 @@
 echo "Working in"
 echo "- $(pwd)"
 
+echo Installing zsh plugins
+echo ---------------------- \n
+
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  # install oh my zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# auto complete for zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions \
+  ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting \
+  ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+
 # Link dotfiles
 #
 echo
@@ -88,19 +104,6 @@ echo
 
 install tmux
 install ripgrep
-
-echo Installing zsh plugins
-echo ---------------------- \n
-
-# install oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# auto complete for zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-  ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-
-git clone https://github.com/zsh-users/zsh-syntax-highlighting \
-  ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 
 if [[ $SPIN ]]; then
