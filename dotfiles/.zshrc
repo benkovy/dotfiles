@@ -35,9 +35,10 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+#
 
 # Open tmux by default (attach to main or create main)
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$SPIN" ]; then
   tmux a -t main || exec tmux new -s main && exit;
 fi
 
@@ -53,3 +54,8 @@ alias vimn="nvim"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+
+if [ $SPIN ]; then
+  PS1="YOU ARE ON SPIN $PS1"
+fi
