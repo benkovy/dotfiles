@@ -10,7 +10,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -73,10 +72,6 @@ set cindent
 set tabstop=2
 set shiftwidth=2
 set expandtab " always uses spaces instead of tab characters
-set splitbelow
-set splitright
-set timeoutlen=1000
-set ttimeoutlen=50
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -84,6 +79,10 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 nmap <silent> [t :tabprevious<cr>
 nmap <silent> ]t :tabnext<cr>
+
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
 
 " Move between windows like cbothner :)
 noremap <C-j> <C-W>j
@@ -98,13 +97,18 @@ nnoremap <right> :bn<CR>
 " Use tabs to move through popups
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 nmap <silent> <c-p> :Files<CR>
 nmap <silent> <c-t> :Buffers<CR>
 nmap <silent> <c-f> :GGrep<CR>
 
 map <leader>bb :bd<cr>
+vmap <silent> ++ <plug>NERDCommenterToggle
+nmap <silent> ++ <plug>NERDCommenterToggle
+
+" ===============================
+" COC improvements
+" ===============================
 
 " ctrl space to bring up completion
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -112,6 +116,33 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nnoremap <silent> M :call CocActionAsync('doHover')<cr>
+
+" ===============================
+" End COC improvements
+" ===============================
+
+
+" Search clearing
+nnoremap <CR> :noh<CR><CR>
 
 " NERDTree
 let NERDTreeShowHidden=1 " Always show dot (hidden) files
@@ -133,7 +164,6 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint',
   \ 'coc-prettier',
-  \ 'coc-graphql',
   \ 'coc-json' ]
 
 " Lightline
