@@ -48,7 +48,7 @@ backup_dotfile() {
 }
 
 symlink_dotfile() {
-  ln -s $DOTFILEDIR/$1 $HOMEDIR/$1
+  ln -sf $DOTFILEDIR/$1 $HOMEDIR/$1
 }
 
 
