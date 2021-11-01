@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ben/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 # Set name of the theme to load --- if set to "random", it will
@@ -20,7 +20,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # User configuration
 
