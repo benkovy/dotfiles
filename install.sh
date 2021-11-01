@@ -105,6 +105,11 @@ echo
 install tmux
 install ripgrep
 
+echo Running Shopify related scripts
+echo -------------------------------
+echo
+
+bash ./analytics.sh
 
 if [[ $SPIN ]]; then
   git config --global user.email "ben.kovacs@shopify.com"
