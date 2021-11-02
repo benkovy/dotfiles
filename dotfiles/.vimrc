@@ -65,11 +65,16 @@ set shiftwidth=2
 set tw=80 	       " Limit line length
 set colorcolumn=80 " and give me a colored column
 
-set smarttab
+set backspace=eol,start,indent " Let backspace wrap
+set whichwrap+=<,>,h,l         " Let movement wrap
+set expandtab                  " Use spaces instead of tabs
+set smarttab                   " Be smart when using tabs ;)
+set ignorecase                 " Case insensitive search
 set cindent
 set tabstop=2
 set shiftwidth=2
 set expandtab " always uses spaces instead of tab characters
+set undofile
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -196,11 +201,27 @@ function! LightlineFilename()
 endfunction
 
 
+" Session management
 
+function! MakeSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  if (filewritable(b:sessiondir) != 2)
+    exe 'silent !mkdir -p ' b:sessiondir
+    redraw!
+  endif
+  let b:filename = b:sessiondir . '/session.vim'
+  exe "mksession! " . b:filename
+endfunction
 
-
-
-
-
-
+function! LoadSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  let b:sessionfile = b:sessiondir . "/session.vim"
+  if (filereadable(b:sessionfile))
+    exe 'source ' b:sessionfile
+  else
+    echo "No session loaded."
+  endif
+endfunction
+au VimEnter * nested :call LoadSession()
+au VimLeave * :call MakeSession()
 
