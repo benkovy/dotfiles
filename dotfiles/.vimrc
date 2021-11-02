@@ -105,6 +105,7 @@ nnoremap <right> :bn<CR>
 " Use tabs to move through popups
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 nmap <silent> <c-p> :Files<CR>
 nmap <silent> <c-t> :Buffers<CR>
