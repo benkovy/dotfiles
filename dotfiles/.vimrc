@@ -87,6 +87,9 @@ nmap <silent> ]t :tabnext<cr>
 map H ^
 map L $
 
+" this may be sus but map q to B
+map q b
+
 " Sane splitting
 nmap \\ :vsplit<cr>
 nmap -- :split<cr>
