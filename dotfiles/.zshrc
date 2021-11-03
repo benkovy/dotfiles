@@ -50,6 +50,14 @@ alias vi="nvim"
 alias vim="nvim"
 alias vimn="nvim"
 
+# spin aliases
+alias ss="spin shell"
+alias ssw="spin shell web"
+alias sss="spin shell shopify"
+alias sos="spin open shopify"
+alias su="spin use"
+alias sl="spin list"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
