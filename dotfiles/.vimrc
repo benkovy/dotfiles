@@ -87,9 +87,6 @@ nmap <silent> ]t :tabnext<cr>
 map H ^
 map L $
 
-" this may be sus but map W (caps) to B
-map W b
-
 " Sane splitting
 nmap \\ :vsplit<cr>
 nmap -- :split<cr>
