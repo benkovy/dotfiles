@@ -87,6 +87,9 @@ nmap <silent> ]t :tabnext<cr>
 map H ^
 map L $
 
+" sus q to go back
+map q b
+
 " Sane splitting
 nmap \\ :vsplit<cr>
 nmap -- :split<cr>
