@@ -93,7 +93,7 @@ map q b
 " Sane splitting
 nmap \\ :vsplit<cr>
 nmap -- :split<cr>
-nmap <bar><bar> ZZ
+nmap <bar><bar> :bd<cr> 
 
 " Move between windows like cbothner :)
 noremap <C-j> <C-W>j
@@ -113,8 +113,6 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 nmap <silent> <c-p> :Files<CR>
 nmap <silent> <c-t> :Buffers<CR>
 nmap <silent> <c-f> :GGrep<CR>
-
-nmap __ :bd<cr>
 
 " ===============================
 " COC improvements
