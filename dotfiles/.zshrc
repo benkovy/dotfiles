@@ -67,3 +67,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 if [ $SPIN ]; then
   PS1="YOU ARE ON SPIN $PS1"
 fi
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
