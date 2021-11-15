@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'
 Plug 'itchyny/lightline.vim'
+Plug 'kqito/vim-easy-replace'
 
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
