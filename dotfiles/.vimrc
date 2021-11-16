@@ -60,7 +60,7 @@ set nocompatible
 set noshowmode
 
 set mouse=a
-set clipboard^=unnamed " use the system register for clipboard
+set clipboard=unnamedplus " use the system register for clipboard
 set whichwrap+=<,>,h,l " Let movement wrap
 set shiftwidth=2
 set tw=80 	       " Limit line length

@@ -66,6 +66,58 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 if [ $SPIN ]; then
   PS1="YOU ARE ON SPIN $PS1"
+
+  function update-all() {
+    cd~/src/github.com/Shopify
+
+    for D in ./*; do
+      if [ -d "$D" ]; then
+        echo
+        echo "updating $D"
+        echo
+        cd "$D"
+        shadowenv trust && git checkout master && git pull
+        cd ..
+      fi
+    done
+  }
+
+  function restart() {
+    echo
+    echo "Restarting shopify--$1"
+    echo
+
+    iso procs restart shopify--$1
+  }
+
+  function stop() {
+    echo
+    echo "Stopping shopify--$1"
+    echo
+
+    iso procs stop shopify--$1
+  }
+  
+  function start() {
+    echo
+    echo "Starting shopify--$1"
+    echo
+
+    iso procs start shopify--$1
+  }
+
+  function list() {
+    if [ $1 ]; then
+      if [ $1 = "-f" ]; then
+        systemctl list-units --failed
+      else
+        iso procs list shopify--$1
+      fi
+    else
+      iso procs list
+    fi
+  }
 fi
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
