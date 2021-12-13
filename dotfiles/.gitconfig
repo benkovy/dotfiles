@@ -19,14 +19,14 @@
 	name = Ben Kovacs
 	email = ben.kovacs@shopify.com
 [alias]
-        push-this = push -u origin HEAD
-        push-this-fwl = push -u origin --force-with-lease
-        cm = checkout master
-        c- = checkout -
-        dms = diff master --stat
-        rbm = rebase master
-        rbim = rebase -i master
-        com-no-e = commit --amend --no-edit
+	push-this = push -u origin HEAD
+	push-this-fwl = push -u origin --force-with-lease
+	cm = checkout main
+	c- = checkout -
+	dms = diff main --stat
+	rbm = rebase main
+	rbim = rebase -i main
+	com-no-e = commit --amend --no-edit
 	co = checkout
 	br = branch
 	st = status
