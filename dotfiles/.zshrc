@@ -80,6 +80,10 @@ if [ $SPIN ]; then
     done
   }
 
+  function logs() {
+    journalctl -f --unit
+  }
+
   function list() {
     if [ $1 ]; then
       if [ $1 = "-f" ]; then
