@@ -66,7 +66,7 @@ if [ $SPIN ]; then
   PS1="YOU ARE ON SPIN $PS1"
 
   function update-all() {
-    cd~/src/github.com/Shopify
+    cd ~/src/github.com/Shopify
 
     for D in ./*; do
       if [ -d "$D" ]; then
@@ -81,7 +81,7 @@ if [ $SPIN ]; then
   }
 
   function logs() {
-    journalctl -f --unit
+    journalctl -f --unit $1
   }
 
   function list() {
