@@ -15,7 +15,7 @@ plugins=(
   git
   zsh-autosuggestions
   web-search
-  copydir 
+  copypath 
   copyfile
   zsh-syntax-highlighting
 )
