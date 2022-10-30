@@ -52,7 +52,7 @@ endif
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-gruvbox-dark-hard
+autocmd vimenter * ++nested colorscheme gruvbox
 
 set relativenumber
 set number " show current absolute line
