@@ -15,7 +15,7 @@ plugins=(
   git
   zsh-autosuggestions
   web-search
-  copypath 
+  copypath
   copyfile
   zsh-syntax-highlighting
 )
@@ -36,11 +36,6 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 #
-
-# Open tmux by default (attach to main or create main)
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [ -z "$SPIN" ]; then
-#   tmux a -t main || exec tmux new -s main && exit;
-# fi
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"

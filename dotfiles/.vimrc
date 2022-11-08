@@ -12,7 +12,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 Plug 'scrooloose/nerdtree'
@@ -24,14 +24,14 @@ Plug 'kqito/vim-easy-replace'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'ap/vim-buftabline'
-Plug 'airblade/vim-gitgutter' 
+Plug 'airblade/vim-gitgutter'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'thoughtbot/vim-rspec'
-Plug 'noprompt/vim-yardoc'    
+Plug 'noprompt/vim-yardoc'
 
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -93,7 +93,7 @@ map q b
 " Sane splitting
 nmap \\ :vsplit<cr>
 nmap -- :split<cr>
-nmap <bar><bar> :bd<cr> 
+nmap <bar><bar> :bd<cr>
 
 " Move between windows like cbothner :)
 noremap <C-j> <C-W>j
@@ -113,40 +113,6 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 nmap <silent> <c-p> :GFiles<CR>
 nmap <silent> <c-t> :Buffers<CR>
 nmap <silent> <c-f> :GGrep<CR>
-
-" ===============================
-" COC improvements
-" ===============================
-
-" ctrl space to bring up completion
-inoremap <silent><expr> <c-space> coc#refresh()
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-nnoremap <silent> M :call CocActionAsync('doHover')<cr>
-
-" ===============================
-" End COC improvements
-" ===============================
 
 " Search clearing
 nnoremap <CR> :noh<CR><CR>
@@ -170,18 +136,6 @@ command! -bang -nargs=* GGrepNoTests
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json' ]
 
 " Lightline
 let g:lightline = {
