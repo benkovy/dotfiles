@@ -62,15 +62,19 @@ if [ $SPIN ]; then
 
   function update-all() {
     cd ~/src/github.com/Shopify
-
-    for D in ./*; do
-      if [ -d "$D" ]; then
-        echo
-        echo "updating $D"
-        echo
-        cd "$D"
-        shadowenv trust && git checkout main && git pull
-        cd ..
+    # Loop over all subdirectories
+    for d in $dir/*; do
+      if [ -d "$d" ]; then
+        cd "$d"
+        # Check if the repository has a 'main' branch
+        if git show-ref --verify --quiet refs/heads/main; then
+          shadowenv trust && git checkout main && git pull
+        # If not, check if the repository has a 'master' branch
+        elif git show-ref --verify --quiet refs/heads/master; then
+          shadowenv trust && git checkout master && git pull
+        else
+          echo "Neither main nor master branch found in repository: $d"
+        fi
       fi
     done
   }
@@ -95,6 +99,6 @@ fi
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
 
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
