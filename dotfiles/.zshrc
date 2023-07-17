@@ -25,7 +25,7 @@ if [ $SPIN ]; then
   function update-all() {
     cd ~/src/github.com/Shopify
     # Loop over all subdirectories
-    for d in $dir/*; do
+    for d in ./*; do
       if [ -d "$d" ]; then
         cd "$d"
         # Check if the repository has a 'main' branch
