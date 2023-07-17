@@ -12,11 +12,9 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 fi
 
 # auto complete for zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-  ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting \
-  ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 
 # Link dotfiles
@@ -73,43 +71,6 @@ if [[ $dotfiles ]]; then
 else
   echo "You don't have anything in '$DOTFILEDIR'"
 fi
-
-
-
-# Install dependencies
-#
-echo
-echo Installing dependencies
-echo -----------------------
-echo
-
-
-function install {
-  if ! command -v name &> /dev/null; then
-    if command -v apt-get &> /dev/null; then
-      sudo apt-get install -y $1
-    elif command -v brew &> /dev/null; then
-      brew install $1
-    fi
-  fi
-  echo "--- $1 installed"
-}
-
-install neovim
-curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim --headless +PlugInstall +qall
-echo --- neovim configured
-echo
-
-install tmux
-install ripgrep
-
-echo Running Shopify related scripts
-echo -------------------------------
-echo
-
-bash ./analytics.sh
 
 if [[ $SPIN ]]; then
   git config --global user.email "ben.kovacs@shopify.com"
