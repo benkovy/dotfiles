@@ -4,7 +4,8 @@ echo "Working in"
 echo "- $(pwd)"
 
 echo Installing zsh plugins
-echo ---------------------- \n
+echo ----------------------
+echo
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   # install oh my zsh
@@ -24,7 +25,7 @@ echo Linking dotfiles
 echo ----------------
 echo
 
-HOMEDIR=$HOME
+HOMEDIR="~"
 BACKUPDIR="$HOMEDIR/.dotfiles.backups"
 CURRENTDIR=$(pwd -P)
 DOTFILEDIR="$CURRENTDIR/dotfiles"
