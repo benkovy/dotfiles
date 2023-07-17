@@ -1,5 +1,14 @@
 #! /bin/bash
 
+if [[ $SPIN ]]; then
+  eval "$(shadowenv init zsh)"
+
+  git config --global user.email "ben.kovacs@shopify.com"
+  git config --global user.name "Ben Kovacs"
+  git config --global --unset-all credential.helper
+fi
+
+
 print_heading() {
   echo
   echo ----------------
@@ -72,12 +81,6 @@ if [[ $dotfiles ]]; then
 
 else
   echo "You don't have anything in '$DOTFILEDIR'"
-fi
-
-if [[ $SPIN ]]; then
-  git config --global user.email "ben.kovacs@shopify.com"
-  git config --global user.name "Ben Kovacs"
-  git config --global --unset-all credential.helper
 fi
 
 exit 0
