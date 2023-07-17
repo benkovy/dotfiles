@@ -24,6 +24,14 @@ if [ $SPIN ]; then
 
   function update-all() {
     cd ~/src/github.com/Shopify
+
+    local update_services=false
+
+    # Check if the -u flag was provided
+    if [[ $1 == "-u" ]]; then
+        update_services=true
+    fi
+
     # Loop over all subdirectories
     for d in ./*; do
       if [ -d "$d" ]; then
@@ -37,6 +45,9 @@ if [ $SPIN ]; then
         else
           echo "Neither main nor master branch found in repository: $d"
         fi
+
+        $update_services && systemctl update "${d#./}.service"
+
         cd ..
       fi
     done
