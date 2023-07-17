@@ -37,6 +37,7 @@ if [ $SPIN ]; then
         else
           echo "Neither main nor master branch found in repository: $d"
         fi
+        cd ..
       fi
     done
   }
