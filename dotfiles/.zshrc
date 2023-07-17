@@ -7,7 +7,6 @@
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
-
 plugins=(
   git
   zsh-autosuggestions
@@ -20,17 +19,10 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 if [ $SPIN ]; then
-  PS1="YOU ARE ON SPIN $PS1"
+  PS1="🌀 $PS1"
 
   function update-all() {
     cd ~/src/github.com/Shopify
-
-    local update_services=false
-
-    # Check if the -u flag was provided
-    if [[ $1 == "-u" ]]; then
-        update_services=true
-    fi
 
     # Loop over all subdirectories
     for d in ./*; do
@@ -46,26 +38,8 @@ if [ $SPIN ]; then
           echo "Neither main nor master branch found in repository: $d"
         fi
 
-        $update_services && update "${d#./}"
-
         cd ..
       fi
     done
-  }
-
-  function logs() {
-    journalctl -f --unit $1
-  }
-
-  function list() {
-    if [ $1 ]; then
-      if [ $1 = "-f" ]; then
-        systemctl list-units --failed
-      else
-        iso procs list shopify--$1
-      fi
-    else
-      iso procs list
-    fi
   }
 fi
