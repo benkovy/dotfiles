@@ -1,12 +1,17 @@
 #! /bin/bash
 
-echo "Working in"
+print_heading() {
+  echo
+  echo ----------------
+  echo "$1"
+  echo ----------------
+  echo
+}
+
+print_heading "Working in"
 echo "- $(pwd)"
 
-echo Installing zsh plugins
-echo ----------------------
-echo
-
+print_heading "Installing zsh plugins"
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   # install oh my zsh
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -20,14 +25,7 @@ if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
-
-# Link dotfiles
-#
-echo
-echo Linking dotfiles
-echo ----------------
-echo
-
+print_heading Linking dotfiles
 HOMEDIR=$HOME
 BACKUPDIR="$HOMEDIR/.dotfiles.backups"
 CURRENTDIR=$(pwd -P)
@@ -81,3 +79,5 @@ if [[ $SPIN ]]; then
   git config --global user.name "Ben Kovacs"
   git config --global --unset-all credential.helper
 fi
+
+exit 0
