@@ -1,15 +1,12 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
-# Path to your oh-my-zsh installation.
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
 export ZSH=$HOME/.oh-my-zsh
-
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
 
 plugins=(
   git
@@ -21,22 +18,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-
-alias vi="nvim"
-alias vim="nvim"
-alias vimn="nvim"
-
-# spin aliases
-alias ss="spin shell"
-alias sos="spin open shopify"
-alias su="spin use"
-alias sl="spin list"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ $SPIN ]; then
   PS1="YOU ARE ON SPIN $PS1"
