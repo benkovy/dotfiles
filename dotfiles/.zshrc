@@ -46,7 +46,7 @@ if [ $SPIN ]; then
           echo "Neither main nor master branch found in repository: $d"
         fi
 
-        $update_services && systemctl update "${d#./}.service"
+        $update_services && update "${d#./}"
 
         cd ..
       fi
