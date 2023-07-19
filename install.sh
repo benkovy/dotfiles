@@ -7,6 +7,7 @@ if [[ $SPIN ]]; then
 fi
 
 ln -sf ~/dotfiles/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/dotfiles/.gitconfig ~/.gitconfig
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   # install oh my zsh
