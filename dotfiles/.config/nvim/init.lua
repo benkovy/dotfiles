@@ -27,7 +27,6 @@ vim.o.laststatus = 2         -- Always show statusline
 
 require("lazy").setup({
 	require("tree"),
-	require("icons"),	
 	require("theme"),
 	require("fzf"),
 	require("tabs")
