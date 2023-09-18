@@ -27,6 +27,25 @@ return {
     lsp.on_attach(function(client, bufnr)
       lsp.default_keymaps({ buffer = bufnr })
       lsp.buffer_autoformat()
+
+      local opts = { buffer = bufnr }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+
+      vim.api.nvim_create_autocmd("CursorHold", {
+        buffer = bufnr,
+        callback = function()
+          local opts = {
+            focusable = false,
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = 'rounded',
+            source = 'always',
+            prefix = ' ',
+            scope = 'cursor',
+          }
+          vim.diagnostic.open_float(nil, opts)
+        end
+      })
     end)
 
     lsp.setup()

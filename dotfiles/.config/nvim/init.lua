@@ -25,6 +25,7 @@ vim.o.laststatus = 2
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.o.updatetime = 250
 
 require("lazy").setup({
   require("tree"),
