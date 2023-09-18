@@ -1,4 +1,4 @@
-require("keys")
+vim.g.mapleader = ','
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,10 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.wo.signcolumn = "yes"
 vim.wo.number = true         -- Show line number
 vim.wo.relativenumber = true -- Use relative line numbers
-vim.wo.scrolloff = 4         -- Pad the edge of the screen
 vim.o.cmdheight = 2          -- Height of the command bar
 vim.o.hidden = true          -- A buffer becomes hidden when it is abandoned
 vim.o.showmatch = true       -- Show matching brackets when text indicator is over them
@@ -33,7 +31,7 @@ require("lazy").setup({
   require("theme"),
   require("tabs"),
   require("completion"),
-  require("telescope"),
+  require("search"),
   require("treesitter"),
   require("lsp"),
 })
