@@ -21,5 +21,6 @@ fi
 
 ln -sf ~/dotfiles/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/dotfiles/.config ~/.config
 
 exit 0
