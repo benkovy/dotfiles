@@ -39,4 +39,5 @@ require("lazy").setup({
   require("status"),
   require("git"),
   require("autopair"),
+  require("terminal"),
 })
