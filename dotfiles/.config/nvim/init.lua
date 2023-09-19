@@ -35,4 +35,8 @@ require("lazy").setup({
   require("search"),
   require("treesitter"),
   require("lsp"),
+  require("org"),
+  require("status"),
+  require("git"),
+  require("autopair"),
 })
