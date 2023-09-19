@@ -56,42 +56,19 @@ return {
     end
   },
   {
-    'mhartington/formatter.nvim',
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "jose-elias-alvarez/null-ls.nvim",
+    },
     config = function()
-      local util = require("formatter.util")
-
-      function prettier()
-        return {
-          exe = 'prettier', -- change this to your prettier path
-          args = {
-            '--config-precedence',
-            'prefer-file',
-            '--print-width',
-            vim.bo.textwidth,
-            '--stdin-filepath',
-            vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
-          },
-          stdin = true,
-        }
-      end
-
-      require("formatter").setup({
-        filetype = {
-          javascript = { prettier },
-          typescript = { prettier },
-          javascriptreact = { prettier },
-          typescriptreact = { prettier },
-          ['javascript.jsx'] = { prettier },
-          ['typescript.tsx'] = { prettier },
-          css = { prettier },
-          json = { prettier },
-          jsonc = { prettier },
-          scss = { prettier },
-          yaml = { prettier },
-          graphql = { prettier },
-          html = { prettier },
-        }
+      require("mason-null-ls").setup({
+        ensure_installed = {
+          "prettier"
+        },
+        automatic_installation = false,
+        handlers = {},
       })
-    end
+    end,
   }
 }
