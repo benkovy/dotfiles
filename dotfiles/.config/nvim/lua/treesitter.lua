@@ -8,7 +8,6 @@ return {
       ensure_installed = { "javascript", "typescript", "ruby", "json", "yaml", "lua", "tsx", "norg" },
       sync_install = false,
       highlight = { enable = true },
-      indent = { enable = true },
     })
   end
 }
