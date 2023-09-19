@@ -24,7 +24,6 @@ return {
 
       lsp.ensure_installed({
         'tsserver',
-        'eslint',
         'graphql',
       })
 
@@ -64,7 +63,7 @@ return {
     config = function()
       require("mason-null-ls").setup({
         ensure_installed = {
-          "prettier"
+          "prettiereslint"
         },
         automatic_installation = false,
         handlers = {},
