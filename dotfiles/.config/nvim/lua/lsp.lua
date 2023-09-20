@@ -22,6 +22,7 @@ return {
 
       lsp.ensure_installed({
         'tsserver',
+        'eslint',
         'graphql',
         'lua_ls'
       })
@@ -77,6 +78,8 @@ return {
         automatic_installation = true,
         handlers = {},
       })
+
+      require("null-ls").setup()
     end,
   }
 }
