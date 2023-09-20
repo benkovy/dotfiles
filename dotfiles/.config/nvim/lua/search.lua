@@ -15,7 +15,10 @@ return {
         builtin.find_files({ hidden = true })
       end, {})
       vim.keymap.set('n', '<leader>f', function()
-        builtin.live_grep({ hidden = true })
+        builtin.live_grep({
+          vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column',
+            '--smart-case', '--hidden' }
+        })
       end, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

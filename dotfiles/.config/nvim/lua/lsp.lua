@@ -1,7 +1,5 @@
 return {
   {
-
-
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
     dependencies = {
@@ -25,11 +23,21 @@ return {
       lsp.ensure_installed({
         'tsserver',
         'graphql',
+        'lua_ls'
+      })
+
+      lsp.format_on_save({
+        format_opts = {
+          async = false,
+          timeout_ms = 10000,
+        },
+        servers = {
+          ['lua_ls'] = { 'lua' },
+        }
       })
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
-        lsp.buffer_autoformat()
 
         local opts = { buffer = bufnr }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -63,7 +71,8 @@ return {
     config = function()
       require("mason-null-ls").setup({
         ensure_installed = {
-          "prettier"
+          "prettier",
+          "stylelua"
         },
         automatic_installation = true,
         handlers = {},
