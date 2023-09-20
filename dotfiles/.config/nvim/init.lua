@@ -13,6 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.wo.signcolumn = "yes"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.wo.number = true         -- Show line number

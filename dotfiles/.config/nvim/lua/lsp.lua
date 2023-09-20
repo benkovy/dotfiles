@@ -6,6 +6,8 @@ return {
       { 'neovim/nvim-lspconfig' },
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
+      { "jay-babu/mason-null-ls.nvim" },
+      { "jose-elias-alvarez/null-ls.nvim" },
       { 'rafamadriz/friendly-snippets' }, -- Optional
     },
     config = function()
@@ -61,25 +63,25 @@ return {
       end)
 
       lsp.setup()
-    end
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = {
-          "prettier",
-          "stylelua"
-        },
-        automatic_installation = true,
-        handlers = {},
+
+      local null_ls = require('null-ls')
+
+      null_ls.setup({
+        sources = {
+          -- Replace these with the tools you want to install
+          -- make sure the source name is supported by null-ls
+          -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.stylua,
+        }
       })
 
-      require("null-ls").setup()
-    end,
-  }
+      -- See mason-null-ls.nvim's documentation for more details:
+      -- https://github.com/jay-babu/mason-null-ls.nvim#setup
+      require('mason-null-ls').setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+      })
+    end
+  },
 }
