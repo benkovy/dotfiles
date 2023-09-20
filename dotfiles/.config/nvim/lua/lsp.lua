@@ -63,9 +63,9 @@ return {
     config = function()
       require("mason-null-ls").setup({
         ensure_installed = {
-          "prettiereslint"
+          "prettier"
         },
-        automatic_installation = false,
+        automatic_installation = true,
         handlers = {},
       })
     end,

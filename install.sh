@@ -23,4 +23,28 @@ ln -sf ~/dotfiles/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/dotfiles/.config/nvim ~/.config/nvim
 
+
+if command -v rg &> /dev/null
+then
+    echo "ripgrep is already installed."
+else
+    echo "ripgrep is not installed. Installing now..."
+
+    # Check if Homebrew is installed
+    if command -v brew &> /dev/null
+    then
+        echo "Homebrew is installed. Proceeding with the installation..."
+        brew install ripgrep
+    # Check if apt-get is installed
+    elif command -v apt-get &> /dev/null
+    then
+        echo "apt-get is installed. Proceeding with the installation..."
+        sudo apt-get update
+        sudo apt-get install -y ripgrep
+    else
+        echo "Neither Homebrew nor apt-get is available on this system. Please install one of them first."
+        exit 1
+    fi
+fi
+
 exit 0
